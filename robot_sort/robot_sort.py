@@ -96,8 +96,28 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+       #can only do iterative sorting, so that means bubble, selection, or insertion. See if insertion works
+        #if the robot can move right
+        while self.can_move_right():
+            #do it
+            self.move_right()
+            #grab what's there
+            self.swap_item()
+            #sliiiide to the left
+            self.move_left()
+            #if the robot's item is smaller than what you're seeing and it can go farther left
+            while self.compare_item() == -1 and self.can_move_left():
+                #bring that tiny stuff to the front. The front loves tiny stuff
+                self.move_left()
+            #otherwise it's time to go to the right
+            if self.compare_item() == 1:
+                self.move_right()
+            #if your item is a big ole guy
+            while self.compare_item() != None:
+                #bring it to the front
+                self.swap_item()
+                self.move_right()
+            self.swap_item()
 
 
 if __name__ == "__main__":
